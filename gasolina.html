@@ -1,0 +1,49 @@
+<!-- archivo: coche.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Trouble</title>
+</head>
+<body>
+  <h1>Car Won’t Start</h1>
+
+  <label>Do you live nearby? (yes/no): <input type="text" id="near"></label><br>
+  <label>Do you want to walk? (yes/no): <input type="text" id="walk"></label><br>
+  <label>Has fuel? (yes/no): <input type="text" id="fuel"></label><br>
+  <label>Do you have money? (yes/no): <input type="text" id="money"></label><br>
+  <label>Has battery? (yes/no): <input type="text" id="battery"></label><br>
+
+  <button onclick="checkCar()">Check</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkCar() {
+      let near = document.getElementById("near").value.toLowerCase();
+      let walk = document.getElementById("walk").value.toLowerCase();
+      let fuel = document.getElementById("fuel").value.toLowerCase();
+      let money = document.getElementById("money").value.toLowerCase();
+      let battery = document.getElementById("battery").value.toLowerCase();
+
+      if (near === "yes" && walk === "yes") {
+        document.getElementById("result").innerText = "Go by foot, fix it tomorrow.";
+      } else {
+        if (fuel === "no") {
+          if (money === "yes") {
+            document.getElementById("result").innerText = "Put fuel in the car.";
+          } else {
+            document.getElementById("result").innerText = "Go by metro.";
+          }
+        } else {
+          if (battery === "no") {
+            document.getElementById("result").innerText = "Recharge the battery.";
+          } else {
+            document.getElementById("result").innerText = "Visit the mechanic.";
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

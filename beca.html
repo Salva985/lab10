@@ -1,0 +1,41 @@
+<!-- archivo: beca.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scholarship Checker</title>
+</head>
+<body>
+  <h1>Check Scholarship Eligibility</h1>
+
+  <label>Age: <input type="number" id="age"></label><br>
+  <label>City: <input type="text" id="city"></label><br>
+  <label>Large family? (yes/no): <input type="text" id="family"></label><br>
+  <label>Are you a programming genius? (yes/no): <input type="text" id="genius"></label><br>
+
+  <button onclick="checkScholarship()">Check</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkScholarship() {
+      let age = parseInt(document.getElementById("age").value);
+      let city = document.getElementById("city").value.toLowerCase();
+      let family = document.getElementById("family").value.toLowerCase();
+      let genius = document.getElementById("genius").value.toLowerCase();
+
+      let eligible = false;
+
+      if ((age >= 18 && city === "barcelona") ||
+          (age > 30 && family === "yes") ||
+          (age >= 12 && age <= 18 && genius === "yes")) {
+        eligible = true;
+      }
+
+      document.getElementById("result").innerText = eligible
+        ? "You are eligible for the scholarship!"
+        : "Sorry, you do not meet the criteria.";
+    }
+  </script>
+</body>
+</html>
